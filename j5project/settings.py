@@ -30,7 +30,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ww3a==ta$g)#ei&*)2c!wkg_6ib&7$f%*l3*#4(@*!ay82p*27'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = True
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
