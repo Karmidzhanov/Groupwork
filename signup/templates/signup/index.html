@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %} Signup {% endblock %}
+
+{% block content %}
+
+{% if latest_meal_list %}
+    <ul>
+    {% for meal in latest_meal_list %}
+		<li>
+			<a href="{% url 'signup:detail' meal.id %}">{{ meal }}</a>
+		</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No meals are available.</p>
+{% endif %}
+
+{% endblock %}

@@ -3,7 +3,7 @@ import datetime
 
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User #Check for correctness
+from django.contrib.auth.models import User 
 
 
 # You can find an example class diagram for the Model at
@@ -11,47 +11,30 @@ from django.contrib.auth.models import User #Check for correctness
 # You'll notice that the Model class provided by Django is
 # elided (it doesn't have the attributes or methods listed.
 
-class Customer(models.Model):
+class Admin(User):
 	
-	user = models.OneToOneField(User)
-
-	"""def __init__(self, username, first, last, password):
-		self.first_name = first
-		self.last_name = last
-		self.password = password
-		self.username = username
-		self.is_staff = True
-		self.is_active = True
+	is_staff = True 	
 	
-	first_name = models.CharField(max_length = 20)
-	last_name = models.CharField(max_length = 20)
-	password =models.CharField(max_length = 10)
-	username = models.CharField(max_length = 10)
-	is_staff = models.BooleanField(default= False)
-	is_active = models.BooleanField(default = True)
-	"""
 	def Name(self):
-		return self.user.first_name + " " + self.user.last_name
+		return self.first_name + " " + self.last_name
 	
 	def __unicode__(self):
-		return self.user.username
+		return self.username
 
 class Cadet(User):
 	
+	#user = models.OneToOneField(User)
 	
-	def __init__(self, username, first, last, password, xnumber, company, sport):
-		User.__init__(self, username, first, last, password)
-		self.xNumber = xnumber
-		self.company = company
-		self.sport = sport
-		self.is_staff = False
-		
-	xNumber = models.CharField(max_length = 6,default = 'x12345')
+	xNumber = models.CharField(max_length = 6)
 	company = models.CharField(max_length = 2)
-	sport = models.CharField(max_length = 30)
+	sport = models.CharField(max_length = 30)	
 	
-
-#DateTimeField('date published')
+	def Name(self):
+		return self.first_name + " " + self.last_name
+	
+	def __unicode__(self):
+		return self.username
+		
 
 class Meal(models.Model):
 	
@@ -66,14 +49,14 @@ class Meal(models.Model):
 		(DINNER, 'Dinner'),
 	)
 	
-	def __init__(self, date, meal_type, meal_description):
+	"""def __init__(self, date, meal_type, meal_description):
 		self.date = date
 		self.meal_type = meal_type
-		self.meal_description = meal_description
+		self.meal_description = meal_description"""
 	
 	date = models.DateField('Meal Date')
-	meal_type = models.CharField(max_length = 2, choices = meal_type_choices)
-	meal_description = models.CharField(max_length=255)
+	meal_type = models.CharField('Meal Type',max_length = 2, choices = meal_type_choices)
+	meal_description = models.CharField('Menu',max_length=255)
 	
 	def __unicode__(self):
-		return self.meal_date + " " + self.meal_type + " " + self.meal_description
+		return self.date.strftime('%m/%d/%Y') + " " + self.meal_type + " " + self.meal_description
