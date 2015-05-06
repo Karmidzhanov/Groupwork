@@ -5,5 +5,5 @@ This is an application to allow cadets to register to attend optional meals. Doi
 Access the app at:
 limitless-craig-2971.kerokuapp.com
 
-* Create a new user via the "New User" link
-* Designate the type of user via the "Admin" checkbox. Cadets leave the box unchecked.
+* Admins may create all new users.
+* When creating users, Admin checks the "Is Staff" checkbox to designate a new user as Admin. Leave the box unchecked for cadets.
